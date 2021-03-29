@@ -17,9 +17,9 @@ passport.use(
         console.log('User: ', username, password)
         const index = db.checkExistingUser(username)
         if (index !== db.NOT_FOUND && await db.isValidUser(username, password)) {
-            const { id, username, email } = users.users[index]
+            const { id, username, email, age } = users.users[index]
             return cb(null,
-                { id, username, email },
+                { id, username, email, age },
                 { message: 'Logged In Successfully' })
         }
         else
